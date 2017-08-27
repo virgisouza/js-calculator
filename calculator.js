@@ -29,6 +29,7 @@ var calculatorModule = (function(){
    * @return { Number }    current total
    */
    function load(x){
+    validate(x);
     total = x;
      return total;
     };
@@ -47,6 +48,7 @@ var calculatorModule = (function(){
    * @param { Number } x
    */
    function add(x){
+    validate(x);
     return total += x;
    }
 
@@ -55,7 +57,7 @@ var calculatorModule = (function(){
    * @param  { Number } x
    */
    function subtract(x){
-
+    validate(x);
     return total -= x;
    }
 
@@ -64,6 +66,7 @@ var calculatorModule = (function(){
    * @param  { Number } x
    */
    function multiply(x){
+    validate(x);
     return total *= x;
    }
 
@@ -72,6 +75,7 @@ var calculatorModule = (function(){
    * @param  { Number } x
    */
    function divide(x){
+    validate(x);
     return total /= x;
    }
 
@@ -102,11 +106,11 @@ var calculatorModule = (function(){
   /**
    * Validation
    */
-function validate(x){
-  if((x === 'number') === true ){
-
+function validate(x){ 
+    if (typeof x !== 'number'){
+    throw new Error('Please input a number');
+    } 
   }
-}
 
 
   return calculator;
